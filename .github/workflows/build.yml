@@ -27,7 +27,10 @@ jobs:
 
       - name: Run Tests and Generate Coverage
         run: npm run test:cov
-
+      - name: fix code coverage paths
+        working-directory: ./src/coverage
+        run: |
+          sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' lcov.info
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
