@@ -26,8 +26,9 @@ jobs:
         run: npm run build
 
       - name: Run Tests and Generate Coverage
-        run: npm run test:cov
-             sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' ./src/coverage/lcov.info
+        run: |
+            npm run test:cov
+            sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' ./src/coverage/lcov.info
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
